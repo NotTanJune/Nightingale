@@ -1,7 +1,7 @@
 """
 Groq LLM client for clinical text processing.
 
-Uses the Groq Python SDK with the Llama 3.3 70B model for:
+Uses the Groq Python SDK with the GPT-OSS-20B model for:
 - Care note summarization
 - Clinical highlight extraction
 - Patient summary generation

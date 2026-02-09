@@ -177,7 +177,7 @@ Located at: `ai-service/services/redaction.py`
 Raw Text → Presidio Analyzer (spaCy NER + custom regex)
          → Detected entities (names, NRIC, phones, MRNs)
          → Presidio Anonymizer (replace with <PERSON_1>, <PHONE_1>)
-         → Redacted text sent to Groq API ()
+         → Redacted text sent to Groq API (GPT-OSS-20B)
          → LLM response with placeholders
          → Server-side re-identification map (never sent to client)
 ```

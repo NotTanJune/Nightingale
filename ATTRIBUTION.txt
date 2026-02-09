@@ -188,10 +188,10 @@ PostgreSQL (15.x)
 AI MODELS
 ---------
 
-Llama 3.3 70B (via Groq API)
-  License: Llama 3.3 Community License Agreement
-  Copyright: Meta Platforms, Inc.
-  URL: https://ai.meta.com/llama/
+GPT-OSS-20B (via Groq API)
+  License: Apache-2.0
+  Copyright: OpenAI
+  URL: https://huggingface.co/openai/gpt-oss-20b
 
 
 DESIGN SYSTEM
