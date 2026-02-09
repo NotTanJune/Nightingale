@@ -2,7 +2,13 @@
 
 A real-time collaborative patient note system that replaces fragmented EHR free-text notes with a single, shared, longitudinal care note. Built with progressive trust disclosure, AI-powered insights, and robust RBAC enforcement.
 
-## Demo Quick Start
+## Live Demo
+
+**https://frontend-lake-five-85.vercel.app**
+
+Login with any demo account below to explore the system.
+
+## Local Quick Start
 
 The fastest way to run Nightingale for demo/evaluation:
 
@@ -73,81 +79,6 @@ Open http://localhost:3000 and login with any of these accounts:
 - **Real-time Collaboration**: Requires `SUPABASE_JWT_SECRET` and `SUPABASE_SERVICE_ROLE_KEY` (not included in demo). The app gracefully degrades without these.
 - **AI Features**: Summarization, highlights, and PHI redaction work with the included Groq API key.
 
----
-
-## Full Development Setup
-
-For contributors or those wanting to run their own Supabase instance:
-
-### Prerequisites
-
-- Node.js 20+
-- Python 3.12+
-- Docker (for Supabase local)
-- Supabase CLI (`npm install -g supabase`)
-
-### 1. Clone and Install
-
-```bash
-git clone <repo-url> nightingale
-cd nightingale
-
-npm install
-
-cd ai-service
-pip install -e ".[dev]"
-python -m spacy download en_core_web_sm
-cd ..
-```
-
-### 2. Set Up Environment
-
-```bash
-cp .env.example .env
-# Fill in your Supabase and Groq API keys
-```
-
-The `.env` file requires:
-- Supabase credentials (URL, anon key, service role key, JWT secret)
-- Groq API key for LLM access
-
-### 3. Start Supabase
-
-```bash
-supabase start
-# Note the API URL, anon key, and service role key in the output
-# Update your .env file with these values
-```
-
-### 4. Run Migrations & Seed Data
-
-```bash
-supabase db push
-```
-
-Create demo users via Supabase Dashboard, then call the seed function:
-
-```sql
-SELECT seed_demo_data(
-  'clinician-uuid'::uuid,
-  'staff-uuid'::uuid,
-  'patient-uuid'::uuid,
-  'admin-uuid'::uuid
-);
-```
-
-### 5. Start All Services
-
-```bash
-npm run dev
-```
-
-This starts:
-- **Frontend:** http://localhost:3000
-- **Collab Server:** ws://localhost:1234
-- **AI Service:** http://localhost:8000
-
----
 
 ## Architecture
 
@@ -246,7 +177,7 @@ Located at: `ai-service/services/redaction.py`
 Raw Text → Presidio Analyzer (spaCy NER + custom regex)
          → Detected entities (names, NRIC, phones, MRNs)
          → Presidio Anonymizer (replace with <PERSON_1>, <PHONE_1>)
-         → Redacted text sent to Groq API (Llama 3.3 70B)
+         → Redacted text sent to Groq API ()
          → LLM response with placeholders
          → Server-side re-identification map (never sent to client)
 ```
