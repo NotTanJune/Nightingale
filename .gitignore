@@ -57,5 +57,4 @@ yarn-error.log*
 
 # Claude
 .claude/
-TECHNICAL_BRIEF.md
 .mcp.json
